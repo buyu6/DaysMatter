@@ -12,6 +12,7 @@ import com.example.daysmatter.ui.home.Room.MessageDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.concurrent.thread
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val _msgList = MutableLiveData<List<Message>>()
@@ -19,16 +20,27 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val dao = MessageDatabase.getDatabase(application).messageDao()
     init {
         loadMessages()
+
     }
 
     fun loadMessages() {
-        viewModelScope.launch(Dispatchers.IO) {  // 切到IO线程
-            val messages = dao.loadAllMessage()
-            withContext(Dispatchers.Main) {
-                // 切回主线程更新UI，比如 LiveData 或 StateFlow
-                _msgList.value = messages
-            }
+       viewModelScope.launch(Dispatchers.IO) {  // 切到IO线程
+           val messages = dao.getAllByTop()
+           withContext(Dispatchers.Main) {
+               //切回主线程更新UI，比如 LiveData 或 Statlow
+           _msgList.value = messages
+       }
+    }
+}
+
+fun loadMessagesByCategory(category: String) {
+    viewModelScope.launch(Dispatchers.IO) {  // 切到IO线程
+        val messages = dao.getMessagesByCategory(category)
+        withContext(Dispatchers.Main) {
+            //切回主线程更新UI，比如 LiveData 或 Statlow
+            _msgList.value=messages
         }
+    }
     }
 }
 

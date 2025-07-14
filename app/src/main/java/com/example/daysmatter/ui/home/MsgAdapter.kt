@@ -15,6 +15,7 @@ import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.daysmatter.EditMsgActivity
 import com.example.daysmatter.MyApplication
+import com.example.daysmatter.OnMsgItemListener
 import com.example.daysmatter.R
 import com.example.daysmatter.ShowMsgActivity
 import com.example.daysmatter.ui.home.Room.Message
@@ -25,11 +26,10 @@ import java.time.temporal.ChronoUnit
 import kotlin.concurrent.thread
 import kotlin.math.abs
 
-class MsgAdapter(private val activity: Activity) : RecyclerView.Adapter<MsgAdapter.ViewHolder>() {
+ class MsgAdapter(private val activity: Activity,private val listener: OnMsgItemListener ) : RecyclerView.Adapter<MsgAdapter.ViewHolder>() {
     private lateinit var today: LocalDate
     private var data = mutableListOf<Message>()
     private val dao: MessageDao = MessageDatabase.getDatabase(activity).messageDao()
-
     fun submitList(newList: List<Message>) {
         data = newList.toMutableList()
         notifyDataSetChanged()
@@ -45,15 +45,18 @@ class MsgAdapter(private val activity: Activity) : RecyclerView.Adapter<MsgAdapt
                 if (position != RecyclerView.NO_POSITION) {
                     val msg = data[position]
                     val intent = Intent(activity, ShowMsgActivity::class.java).apply {
+                        putExtra("id",msg.id)
                         putExtra("title", msg.title)
                         putExtra("time", msg.time)
                         putExtra("aimdate", msg.aimdate.toString())
+                        putExtra("isTop",msg.isTop)
+                        putExtra("category",msg.category)
                     }
                     activity.startActivity(intent)
                 }
             }
 
-            itemView.setOnLongClickListener {
+            itemView.setOnLongClickListener() {
                 val position = bindingAdapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     val msg = data[position]
@@ -70,12 +73,7 @@ class MsgAdapter(private val activity: Activity) : RecyclerView.Adapter<MsgAdapt
                             }
                         }
                         setNegativeButton("编辑") { _, _ ->
-                            val intent = Intent(activity, EditMsgActivity::class.java).apply {
-                                putExtra("title", msg.title)
-                                putExtra("time", msg.time)
-                                putExtra("aimdate", msg.aimdate.toString())
-                            }
-                            activity.startActivityForResult(intent, 1) // 如果你暂时还不想换新版 API
+                            listener.onEditClicked(msg)//回调交给 Fragment 去处理
                         }
                         show()
                     }

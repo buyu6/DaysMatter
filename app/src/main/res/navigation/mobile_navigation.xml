@@ -8,15 +8,18 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.daysmatter.ui.home.HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home"
+        android:label="Days Matter · 倒数日"/>
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.example.daysmatter.ui.dashboard.DashboardFragment"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard"
+        android:label="倒数本"/>
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.daysmatter.ui.notifications.NotificationsFragment"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_notifications"
+        android:label="历史上的今天"/>
 </navigation>

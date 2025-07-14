@@ -20,6 +20,7 @@ abstract class MessageDatabase:RoomDatabase() {
                 return  it
             }
             return Room.databaseBuilder(context.applicationContext,MessageDatabase::class.java,"message_database")
+                .fallbackToDestructiveMigration()
                 .build().apply {
                     instance=this
                 }

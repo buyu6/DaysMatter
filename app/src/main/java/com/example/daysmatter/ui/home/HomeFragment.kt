@@ -1,6 +1,8 @@
 package com.example.daysmatter.ui.home
 
+import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -24,8 +26,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.daysmatter.AddMsgActivity
 import com.example.daysmatter.EditMsgActivity
+import com.example.daysmatter.OnMsgItemListener
 import com.example.daysmatter.R
 import com.example.daysmatter.databinding.FragmentHomeBinding
+import com.example.daysmatter.ui.home.Room.Message
 
 class HomeFragment : Fragment() {
 
@@ -33,16 +37,13 @@ class HomeFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: MsgAdapter
-    private lateinit var editLauncher: ActivityResultLauncher<Intent>
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         val view:View=inflater.inflate(R.layout.fragment_home, container, false)
-        val toolbar = view.findViewById<Toolbar>(R.id.firstToolbar)
-        (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
-        (requireActivity() as AppCompatActivity).supportActionBar?.title = "Days Matter"
         val decorView = requireActivity().window.decorView
         decorView.systemUiVisibility =
             View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
@@ -54,7 +55,24 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById(R.id.firstRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        adapter = MsgAdapter(requireActivity())
+        adapter = MsgAdapter(
+            requireActivity(),
+            listener =object :OnMsgItemListener{
+                override fun onEditClicked(message: Message) {
+                    val intent = Intent(requireContext(), EditMsgActivity::class.java).apply {
+                        putExtra("return",1)
+                        putExtra("id", message.id)
+                        putExtra("title", message.title)
+                        putExtra("time", message.time)
+                        putExtra("aimdate", message.aimdate)
+                        putExtra("isTop",message.isTop)
+                        putExtra("category",message.category)
+                    }
+                    editLauncher.launch(intent)
+                }
+
+            }
+        )
         recyclerView.adapter = adapter
 
         // 观察 ViewModel 中的数据（建议 msgList 为 LiveData）
@@ -79,16 +97,12 @@ class HomeFragment : Fragment() {
                 }
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
-        editLauncher = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
-        ) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                val title = result.data?.getStringExtra("title1")
-                val time = result.data?.getIntExtra("time1",0)
-                val aimdate = result.data?.getStringExtra("aimdate1")
-                viewModel.loadMessages() // 或 adapter.submitList(...) 触发 UI 更新
+        val editLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == RESULT_OK) {
+                viewModel.loadMessages() // 重新加载数据库
             }
         }
+
 
     }
 
@@ -96,4 +110,11 @@ class HomeFragment : Fragment() {
         super.onResume()
         viewModel.loadMessages()
     }
+
+    private val editLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        if (it.resultCode == RESULT_OK) {
+            viewModel.loadMessages()//通知数据更改，界面变化
+        }
+    }
+
 }

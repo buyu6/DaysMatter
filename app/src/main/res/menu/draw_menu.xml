@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/allEvent"
+            android:icon="@drawable/allevent"
+            android:title="全部事件"/>
+        <item
+            android:id="@+id/lifeEvent"
+            android:icon="@drawable/life"
+            android:title="生活"/>
+        <item
+            android:id="@+id/workEvent"
+            android:icon="@drawable/work"
+            android:title="工作"/>
+        <item
+            android:id="@+id/missEvent"
+            android:icon="@drawable/miss"
+            android:title="纪念日"/>
+        <item
+            android:id="@+id/categoryEvent"
+            android:icon="@drawable/ic_dashboard"
+            android:title="分类"/>
+        <item
+            android:id="@+id/historyEvent"
+            android:icon="@drawable/clock"
+            android:title="历史上的今天"/>
+    </group>
+
+</menu>

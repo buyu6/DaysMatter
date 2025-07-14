@@ -16,30 +16,54 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_collapseMode="pin"
-            />
+            tools:ignore="DuplicateIds" />
     </com.google.android.material.appbar.AppBarLayout>
-    <EditText
-        android:id="@+id/firstaddmsg"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="输入事件名称"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:background="@android:color/transparent"
-        android:paddingLeft="16sp"
-        />
-    <Button
-        android:id="@+id/chooseDate"
-        android:layout_width="match_parent"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_edit"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"/>
+        <EditText
+            android:id="@+id/firstaddmsg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="输入事件名称"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:background="@android:color/transparent"
+            android:paddingLeft="16sp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="目标日"
-        android:textSize="16sp"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/black"
-        android:gravity="left"
-        android:background="@android:color/transparent"
-        />
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_home"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"/>
+        <Button
+            android:id="@+id/chooseDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="目标日"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:gravity="left"
+            android:background="@android:color/transparent"
+            />
+    </LinearLayout>
     <TextView
         android:id="@+id/showDate"
         android:layout_width="match_parent"
@@ -48,10 +72,69 @@
         android:textColor="@color/red"
         android:gravity="left|center_vertical"
         android:paddingLeft="16sp"
+        android:layout_marginLeft="35dp"
         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_dashboard"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="倒数本"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="17dp"
+            android:textColor="@color/black"
+            android:layout_weight="2.5"
+            android:gravity="left"/>
+
+        <Spinner
+            android:id="@+id/book_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:gravity="end"
+            android:layout_marginTop="10dp"
+            android:spinnerMode="dropdown" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_pin"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"/>
+        <Switch
+            android:id="@+id/switch_pin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="置顶"
+            android:textOff="关闭"
+            android:textOn="开启"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="16sp"
+            />
+    </LinearLayout>
+
     <Button
         android:id="@+id/insertMsg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="保存"/>
+
 </LinearLayout>
