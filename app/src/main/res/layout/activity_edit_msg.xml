@@ -5,20 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditMsgActivity"
+    tools:context=".ui.home.EditMsgActivity"
     android:orientation="vertical">
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/editToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        tools:ignore="MissingConstraints">
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/editToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:layout_collapseMode="pin"
-            />
-    </com.google.android.material.appbar.AppBarLayout>
+        android:background="#E0F0FA"
+        app:layout_collapseMode="pin"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -76,36 +70,67 @@
         android:layout_marginLeft="35dp"
         />
     <LinearLayout
+        android:id="@+id/changeCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingVertical="8dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp">
+
+        <!-- 左侧图标 -->
         <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/ic_dashboard"
+            android:layout_marginEnd="12dp"/>
+
+        <!-- “倒数本”标题 -->
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_dashboard"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:singleLine="true"
             android:text="倒数本"
             android:textSize="16sp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="17dp"
             android:textColor="@color/black"
-            android:layout_weight="2.5"
-            android:gravity="left"/>
+            android:gravity="center_vertical"
+            android:layout_marginEnd="10dp"/>
 
-        <Spinner
-            android:id="@+id/category_spinner"
-            android:layout_width="wrap_content"
+        <!-- 右侧整体包裹：种类图标+名字+箭头 -->
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_weight="1"
             android:gravity="end"
-            android:layout_marginTop="10dp"
-            android:spinnerMode="dropdown" />
+            android:orientation="horizontal">
+
+            <!-- 分类图标 -->
+            <ImageView
+                android:id="@+id/EditshowIconCategoryBook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"/>
+
+            <!-- 分类名称，超出省略 -->
+            <TextView
+                android:id="@+id/EditshowNameCategoryBook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:maxLines="1"
+                android:maxWidth="220dp"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:layout_marginEnd="8dp"/>
+
+            <!-- 右侧箭头 -->
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/ic_next"/>
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

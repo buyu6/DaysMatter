@@ -6,36 +6,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ShowMsgActivity"
+    tools:context=".ui.home.ShowMsgActivity"
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
     android:background="@drawable/show_background"
     >
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/showToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/transparent"
-        >
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/showToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:layout_collapseMode="pin"
-            />
-
-    </com.google.android.material.appbar.AppBarLayout>
+        android:background="#E0F0FA"
+        app:layout_collapseMode="pin"
+        />
     <!-- 上占位 -->
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"/>
+        android:layout_weight="0.2"/>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:layout_marginTop="16dp"
         app:cardCornerRadius="20dp"
         app:elevation="10dp"
         >

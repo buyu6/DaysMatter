@@ -6,8 +6,8 @@ import android.content.Context
 
 class MyApplication : Application() {
     companion object {
-        const val APPID="jnokxafgokripkhd"
-        const val APPSECRET="GY9h0qmKSwaQP943gEELCMQDltmq5BrV"
+        //聚合数据的api
+        const val APPKEY="b35989dd6db40fb536d8be42f3202b27"
         @SuppressLint("StaticFieldLeak")
         lateinit var context: Context
     }

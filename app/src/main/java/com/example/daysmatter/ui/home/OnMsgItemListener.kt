@@ -1,4 +1,4 @@
-package com.example.daysmatter
+package com.example.daysmatter.ui.home
 
 import com.example.daysmatter.ui.home.Room.Message
 

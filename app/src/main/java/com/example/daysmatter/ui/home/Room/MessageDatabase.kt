@@ -6,9 +6,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.daysmatter.Repository
+import com.example.daysmatter.ui.home.Repository
 
-@Database(version = 1, entities = [Message::class])
+@Database(version = 1, entities = [Message::class,CategoryItem::class])
 @TypeConverters(Repository.Converters::class)
 abstract class MessageDatabase:RoomDatabase() {
     abstract fun messageDao():MessageDao
@@ -20,7 +20,6 @@ abstract class MessageDatabase:RoomDatabase() {
                 return  it
             }
             return Room.databaseBuilder(context.applicationContext,MessageDatabase::class.java,"message_database")
-                .fallbackToDestructiveMigration()
                 .build().apply {
                     instance=this
                 }

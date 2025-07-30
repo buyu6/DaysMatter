@@ -9,24 +9,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 
-import androidx.lifecycle.LiveData
-
 
 import androidx.recyclerview.widget.RecyclerView
-import com.example.daysmatter.EditMsgActivity
-import com.example.daysmatter.MyApplication
-import com.example.daysmatter.OnMsgItemListener
 import com.example.daysmatter.R
-import com.example.daysmatter.ShowMsgActivity
 import com.example.daysmatter.ui.home.Room.Message
 import com.example.daysmatter.ui.home.Room.MessageDao
 import com.example.daysmatter.ui.home.Room.MessageDatabase
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 import kotlin.concurrent.thread
-import kotlin.math.abs
 
- class MsgAdapter(private val activity: Activity,private val listener: OnMsgItemListener ) : RecyclerView.Adapter<MsgAdapter.ViewHolder>() {
+class MsgAdapter(private val activity: Activity,private val listener: OnMsgItemListener) : RecyclerView.Adapter<MsgAdapter.ViewHolder>() {
     private lateinit var today: LocalDate
     private var data = mutableListOf<Message>()
     private val dao: MessageDao = MessageDatabase.getDatabase(activity).messageDao()
@@ -50,7 +43,8 @@ import kotlin.math.abs
                         putExtra("time", msg.time)
                         putExtra("aimdate", msg.aimdate.toString())
                         putExtra("isTop",msg.isTop)
-                        putExtra("category",msg.category)
+                        putExtra("category",msg.categoryName)
+                        putExtra("categoryIconId",msg.categoryIcon)
                     }
                     activity.startActivity(intent)
                 }

@@ -1,13 +1,13 @@
 package com.example.daysmatter.ui.notifications
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.example.daysmatter.ui.home.Repository
+import com.example.daysmatter.ui.notifications.Entity.HistoryEvent
+import java.time.LocalDate
 
 class NotificationsViewModel : ViewModel() {
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
-    }
-    val text: LiveData<String> = _text
+    val today=LocalDate.now()
+   val date = "${today.monthValue}/${today.dayOfMonth}"
+    val historyList = Repository.searchHistory(date)
 }

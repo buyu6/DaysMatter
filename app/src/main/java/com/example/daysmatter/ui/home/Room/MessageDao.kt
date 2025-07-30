@@ -24,6 +24,16 @@ interface MessageDao {
     @Query("UPDATE message SET isTop = false WHERE isTop = true")
     fun cancelAllTop()
     // 查询某个分类下的所有消息
-    @Query("SELECT * FROM message WHERE category = :category ORDER BY isTop DESC, id ASC")
+    @Query("SELECT * FROM message WHERE categoryName = :category ORDER BY isTop DESC, id ASC")
     fun getMessagesByCategory(category: String): List<Message>
+    @Insert
+    fun insertCategory(category:CategoryItem):Long
+    @Update
+    fun updateCategory(newcategory:CategoryItem)
+    @Delete
+    fun deleteCategory(category:CategoryItem)
+    @Query("select * from category")
+    fun loadAllcategory():List<CategoryItem>
+    @Query("DELETE FROM message WHERE categoryName = :categoryName")
+    fun deleteMessagesByCategory(categoryName: String)
 }

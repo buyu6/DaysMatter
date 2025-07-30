@@ -20,7 +20,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val dao = MessageDatabase.getDatabase(application).messageDao()
     init {
         loadMessages()
-
     }
 
     fun loadMessages() {

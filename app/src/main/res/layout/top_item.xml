@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.daysmatter.ViewLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/topItem"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:background="#F0F8FF">
+    <TextView
+        android:id="@+id/topTitle"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/theme_title"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="25dp"/>
+
+    <TextView
+        android:id="@+id/topTime"
+        android:layout_width="50dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/theme_title"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/topAimdate"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/theme_subtitle"
+        android:textSize="10sp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/topDay"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="65dp"
+        android:gravity="center"
+        android:textColor="@color/theme_title"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="25dp"/>
+
+</com.example.daysmatter.ViewLayout>
