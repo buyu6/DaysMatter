@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ai.AIActivity"
+    android:background="@drawable/background">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/AiToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/transparent"
+        >
+
+        <TextView
+            android:id="@+id/toolbar_title_centered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="AI小助手"
+            android:textColor="@color/teal_200"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </com.google.android.material.appbar.MaterialToolbar>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/AiRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="80dp"
+        app:cardElevation="10dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <EditText
+                android:id="@+id/AiEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="请输入想要询问的问题"/>
+            <Button
+                android:id="@+id/AiButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发送"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+
+</LinearLayout>

@@ -55,6 +55,15 @@ class SettingCategoryActivity : AppCompatActivity() {
                 selectedIconId = selectedIconId,
                 onDeleteClick = { },
                 isSelectedListener = { category ->
+                    // 确保默认分类保存到数据库
+                    thread {
+                        val existingCategory = dao.loadAllcategory().find { it.name == category.name }
+                        if (existingCategory == null) {
+                            // 如果数据库中不存在，则保存
+                            dao.insertCategory(category)
+                        }
+                    }
+                    
                     val intent = Intent().apply {
                         putExtra("icon_id", category.imageId)
                         putExtra("category_name",category.name)
@@ -93,13 +102,23 @@ class SettingCategoryActivity : AppCompatActivity() {
             startActivity(intent)
         }
         viewModel.msgList.observe(this){ list->
-            // 添加"全部"分类到列表开头
+            // 添加默认分类到列表开头，但保持数据库中保存的图标ID
             val allCategories = mutableListOf<CategoryItem>()
-            allCategories.add(CategoryItem(name = "生活", imageId = R.drawable.life))
-            allCategories.add(CategoryItem(name = "纪念日", imageId = R.drawable.miss))
-            allCategories.add(CategoryItem(name = "工作", imageId = R.drawable.work))
-            allCategories.addAll(list)
-            adapter?.submitList(allCategories)
+            
+            // 查找数据库中是否已有这些默认分类
+            val lifeCategory = list.find { it.name == "生活" } ?: CategoryItem(name = "生活", imageId = R.drawable.life)
+            val missCategory = list.find { it.name == "纪念日" } ?: CategoryItem(name = "纪念日", imageId = R.drawable.miss)
+            val workCategory = list.find { it.name == "工作" } ?: CategoryItem(name = "工作", imageId = R.drawable.work)
+
+            allCategories.add(lifeCategory) 
+            allCategories.add(missCategory)
+            allCategories.add(workCategory)
+            
+            // 添加其他自定义分类
+            val customCategories = list.filter { it.name !in listOf("生活", "纪念日", "工作") }
+            allCategories.addAll(customCategories)
+
+            adapter.submitList(allCategories.distinctBy { it.name })
         }
     }
     private fun delete(category:CategoryItem){

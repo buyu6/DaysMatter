@@ -37,15 +37,27 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    packaging {
+        resources {
+            excludes += "/META-INF/INDEX.LIST"
+            excludes += "/META-INF/DEPENDENCIES"
+        }
+    }
+
 }
 
 dependencies {
+    //安装 Google GenAI SDK，引入google-genai
+    implementation("com.google.genai:google-genai:1.0.0")
+    implementation ("androidx.core:core-splashscreen:1.0.1")
     implementation("com.google.android.material:material:1.12.0")
     implementation("de.hdodenhof:circleimageview:3.1.0")
 // Retrofit 核心库
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     // Gson 转换器
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    // OkHttp 日志拦截器
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.12.0")
     implementation ("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.room:room-runtime:2.6.1")
     implementation(libs.androidx.activity)

@@ -5,26 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background"
     tools:context=".ui.dashboard.SettingCategoryActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/setting_category"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#E0F0FA"
+        android:background="#E8F5FE"
+        android:elevation="2dp"
         app:layout_scrollFlags="scroll|enterAlways|snap"
-        />
+        android:layout_marginBottom="8dp" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/settingCategoryRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:clipToPadding="false"
-        android:paddingTop="8dp"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
     <Button
         android:id="@+id/addCategoryBook"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="添加新倒数本"/>
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="16dp"
+        android:text="添加新倒数本"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:elevation="2dp"
+        android:backgroundTint="#3498DB"/>
 
 </LinearLayout>

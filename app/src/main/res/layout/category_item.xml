@@ -1,54 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginVertical="8dp">
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:paddingVertical="8dp">
+        android:orientation="vertical"
+        android:background="@drawable/bg_category_card"
+        android:elevation="2dp"
+        android:layout_margin="1dp"
+        android:padding="6dp">
 
-        <Button
-            android:id="@+id/deleteCategory"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/ic_delete"
-            android:visibility="gone" />
-
-        <ImageView
-            android:id="@+id/categoryIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="10dp"
-            android:padding="4dp"/>
-
-        <TextView
-            android:id="@+id/categoryName"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center_vertical"
-            android:paddingEnd="10dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
-        <ImageView
-            android:id="@+id/CategorySelected"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:background="@drawable/ic_check_circle"
-            android:visibility="gone"/>
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:background="@drawable/bg_category_content"
+            android:elevation="2dp"
+            android:layout_margin="1dp">
+
+            <Button
+                android:id="@+id/deleteCategory"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/ic_delete"
+                android:visibility="gone"
+                android:tint="#9E9E9E"
+                android:backgroundTint="@android:color/transparent"
+                tools:ignore="UseAppTint" />
+
+            <ImageView
+                android:id="@+id/categoryIcon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
+                android:padding="6dp"
+                android:tint="#3498DB"
+                android:background="@android:color/transparent"
+                tools:ignore="UseAppTint" />
+
+            <TextView
+                android:id="@+id/categoryName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingEnd="16dp"
+                android:textStyle="bold"
+                android:textColor="#2C3E50"
+                android:textSize="18sp"
+                android:shadowColor="#1A000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:minHeight="40dp" />
+
+            <ImageView
+                android:id="@+id/CategorySelected"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="end"
+                android:background="@drawable/ic_check_circle"
+                android:visibility="gone"
+                android:tint="#78909C"
+                android:padding="2dp"
+                tools:ignore="UseAppTint" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#F0F0F0" />
 
 </LinearLayout>

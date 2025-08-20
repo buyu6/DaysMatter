@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 图标背景圆形 -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#E0F7FA" />
+            <size
+                android:width="108dp"
+                android:height="108dp" />
+        </shape>
+    </item>
+    <!-- 中间的时钟图标 -->
+    <item
+        android:width="64dp"
+        android:height="64dp"
+        android:drawable="@drawable/clock"
+        android:gravity="center"
+        android:tint="@color/teal_200" />
+</layer-list>

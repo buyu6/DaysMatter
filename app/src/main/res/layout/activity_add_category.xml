@@ -5,68 +5,111 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.dashboard.AddCategoryActivity">
+    tools:context=".ui.dashboard.AddCategoryActivity"
+    android:background="@drawable/background">
+    
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/addCategoryToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="#E0F0FA"
-        app:layout_scrollFlags="scroll|enterAlways|snap"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_dashboard"
-            android:padding="5dp"/>
-        <EditText
-            android:id="@+id/bookName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:gravity="center_vertical"
-            android:hint="点击这里输入本子名称"
-            android:paddingTop="3dp"/>
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_margin="10dp"
-        android:background="#F0F0F0"
-        />
+        app:layout_scrollFlags="scroll|enterAlways|snap"
+        android:elevation="2dp"
+        android:layout_marginBottom="16dp"/>
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="5dp">
+        android:background="@drawable/gradient_modern_primary"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="14dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:elevation="3dp"
+        android:gravity="center_vertical">
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_dashboard"
+            android:layout_marginEnd="16dp"
+            android:tint="@color/white"
+            android:padding="2dp"
+            tools:ignore="UseAppTint"/>
+        <EditText
+            android:id="@+id/bookName"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:gravity="center_vertical"
+            android:hint="点击这里输入本子名称"
+            android:textColor="@color/white"
+            android:textColorHint="#CCFFFFFF"
+            android:textSize="18sp"
+            android:paddingVertical="4dp"
+            android:minHeight="48dp"/>
+    </LinearLayout>
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="16dp"
+        android:background="@drawable/gradient_modern_secondary"
+        android:alpha="0.5"/>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/gradient_modern_secondary"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="14dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="12dp"
+        android:elevation="3dp"
+        android:gravity="center_vertical">
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:src="@drawable/miss"
-            android:padding="5dp"/>
+            android:layout_marginEnd="16dp"
+            android:tint="@color/white"
+            android:padding="2dp"
+            tools:ignore="UseAppTint"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:text="选择你喜欢的图标"
             android:paddingTop="5dp"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:minHeight="48dp"/>
     </LinearLayout>
+    
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/iconRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:clipToPadding="false"
-        android:paddingTop="8dp"
-        android:padding="8dp"/>
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="16dp"
+        android:layout_marginHorizontal="8dp"/>
+    
     <Button
         android:id="@+id/savebutton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:text="保存"
-        />
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:backgroundTint="#3498DB"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="20dp"
+        android:elevation="3dp"/>
 
 </LinearLayout>

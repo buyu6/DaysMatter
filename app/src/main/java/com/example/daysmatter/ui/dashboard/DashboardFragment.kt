@@ -43,8 +43,8 @@ class DashboardFragment : Fragment() {
             allCategories.add(CategoryItem(name = "纪念日", imageId = R.drawable.miss))
             allCategories.add(CategoryItem(name = "工作", imageId = R.drawable.work))
             allCategories.addAll(categories)
-            
-            adapter?.submitList(allCategories)
+
+            adapter?.submitList(allCategories.distinctBy { it.name })
         }
         return root
     }
@@ -91,6 +91,10 @@ class DashboardFragment : Fragment() {
                 }
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+        binding.addCategory.setOnClickListener {
+            val intent= Intent(requireContext(),AddCategoryActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onResume() {

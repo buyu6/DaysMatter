@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.DaysMatter" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowDisablePreview">true</item>
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -14,8 +15,5 @@
         <item name="colorOnSurface">@color/theme_title</item>
         <item name="colorSurfaceVariant">#F0F8FF</item>
         <item name="colorOnSurfaceVariant">@color/colorPrimary</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryDark</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     </style>
 </resources>

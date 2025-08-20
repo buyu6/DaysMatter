@@ -10,6 +10,6 @@ import java.time.LocalDate
 
 interface HistoryService {
     @GET("todayOnhistory/queryEvent.php")
-    fun searchHistory( @Query("date") date: String,
+     fun searchHistory( @Query("date") date: String,
                        @Query("key") key: String=MyApplication.APPKEY): Call<HistoryResponse>
 }

@@ -54,7 +54,14 @@ class CategoryAdapter(
     //对RecyclerView的子项数据进行赋值
     override fun onBindViewHolder(holder: CategoryAdapter.ViewHolder, @SuppressLint("RecyclerView") position: Int) {
         val category =list[position]
-        holder.categoryIcon.setImageResource(category.imageId)
+        // 直接尝试设置图标，如果失败则使用默认图标
+        try {
+            holder.categoryIcon.setImageResource(category.imageId)
+        } catch (e: Exception) {
+            android.util.Log.e("CategoryAdapter", "设置图标失败: ${category.name}, 图标ID: ${category.imageId}", e)
+            holder.categoryIcon.setImageResource(R.drawable.life)
+        }
+        
         holder.categoryName.text=category.name
         if (clickItemView==true){
             holder.itemView.setOnClickListener {

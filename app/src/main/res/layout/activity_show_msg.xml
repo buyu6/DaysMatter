@@ -7,23 +7,30 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.home.ShowMsgActivity"
-    android:paddingLeft="5dp"
-    android:paddingRight="5dp"
-    android:background="@drawable/show_background"
+    android:background="@drawable/showbackground2"
+    android:paddingHorizontal="16dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="16dp"
     >
+
+    <!-- 顶部工具栏 - 半透明毛玻璃效果 -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/showToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#E0F0FA"
+        android:background="@color/transparent"
+        android:elevation="8dp"
         app:layout_collapseMode="pin"
+        android:layout_marginBottom="16dp"
         />
-    <!-- 上占位 -->
+
+    <!-- 上占位 - 减少权重让内容更居中 -->
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2"/>
+        android:layout_weight="0.15"/>
 
+    <!-- 主内容卡片 - 毛玻璃效果 -->
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,47 +38,70 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="16dp"
         app:cardCornerRadius="20dp"
-        app:elevation="10dp"
-        >
+        app:cardElevation="10dp"
+        app:cardBackgroundColor="@android:color/transparent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:padding="20dp"
             >
 
+            <!-- 标题区域 - 渐变背景 -->
             <TextView
                 android:id="@+id/showTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/orange"
+                android:background="@drawable/gradient_soft_blue"
                 android:gravity="center"
-                android:paddingVertical="10sp"
+                android:paddingVertical="16dp"
+                android:paddingHorizontal="20dp"
                 android:textColor="@color/white"
-                android:textSize="30dp" />
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"
+                android:elevation="4dp"
+                />
 
+            <!-- 时间显示区域 - 大字体，深色文字 -->
             <TextView
                 android:id="@+id/showTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:paddingVertical="10sp"
-                android:textColor="@color/black"
-                android:textSize="100dp" />
+                android:paddingVertical="20dp"
+                android:textColor="@color/white"
+                android:textSize="88sp"
+                android:textStyle="bold"
+                android:shadowColor="@color/black"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:layout_marginBottom="16dp"
+                />
 
+            <!-- 目标时间区域 - 柔和背景 -->
             <TextView
                 android:id="@+id/showAimtime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/gray"
+                android:background="@drawable/gradient_soft_pink"
                 android:gravity="center"
-                android:paddingVertical="10sp"
-                android:textSize="20dp" />
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:elevation="2dp"
+                />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
-    <!-- 下占位 -->
+
+    <!-- 下占位 - 增加权重让内容更居中 -->
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1.2"
+        />
 </LinearLayout>
